@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>comparable on Xi Wang</title>
+    <link>https://algoxi.com/tags/comparable/</link>
+    <description>Recent content in comparable on Xi Wang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://algoxi.com/tags/comparable/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Comparable and Comparator in Java</title>
+      <link>https://algoxi.com/p/comparable-and-comparator-in-java/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/comparable-and-comparator-in-java/</guid>
+      <description>Background There are two methods to implement sorting for Custom Class in Java.
+  Comparable&amp;lt; T &amp;gt;
+  It is an interface
+  &amp;lt; T &amp;gt; - the type of objects that this object may be compared to
+  It has only method:
+int compareTo(T o) { &amp;#34;do something&amp;#34; }   Java doc reference
+    Comparator&amp;lt; T &amp;gt;
+  It is an interface</description>
+    </item>
+    
+  </channel>
+</rss>

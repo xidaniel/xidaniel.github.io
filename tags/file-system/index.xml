@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>file system on Xi Wang</title>
+    <link>https://algoxi.com/tags/file-system/</link>
+    <description>Recent content in file system on Xi Wang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://algoxi.com/tags/file-system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OOD Concepts</title>
+      <link>https://algoxi.com/p/ood-concepts/</link>
+      <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/ood-concepts/</guid>
+      <description>What is File System?  如果父类的fields为private,子类就无法访问,所以protected关键字就出来了 子类的constructor的第一行必须super() 父类constructor 子类不会继承任何父类的constructor 只要class没有final修饰符,那么任何class都可以从它继承 多态适用于在同样的父类情况下,每个子类的方法不一样 package是用来解决namespace问题  </description>
+    </item>
+    
+    <item>
+      <title>Design An In-memory File System</title>
+      <link>https://algoxi.com/p/design-an-in-memory-file-system/</link>
+      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/design-an-in-memory-file-system/</guid>
+      <description>What is File System?    In computing, a file system or filesystem (often abbreviated to fs) controls how data is stored and retrieved. Without a file system, data placed in a storage medium would be one large body of data with no way to tell where one piece of data stops and the next begins. By separating the data into pieces and giving each piece a name, the data is easily isolated and identified.</description>
+    </item>
+    
+  </channel>
+</rss>

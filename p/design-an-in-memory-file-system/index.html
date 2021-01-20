@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='An in-memory sile system using Java.'><title>Design An In-memory File System</title>
+
+<link rel='canonical' href='https://algoxi.com/p/design-an-in-memory-file-system/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Design An In-memory File System'>
+<meta property='og:description' content='An in-memory sile system using Java.'>
+<meta property='og:url' content='https://algoxi.com/p/design-an-in-memory-file-system/'>
+<meta property='og:site_name' content='Xi Wang'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='java' /><meta property='article:tag' content='file system' /><meta property='article:published_time' content='2021-01-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-06T00:00:00&#43;00:00'/><meta property='og:image' content='https://algoxi.com/p/design-an-in-memory-file-system/title.png' />
+<meta name="twitter:title" content="Design An In-memory File System">
+<meta name="twitter:description" content="An in-memory sile system using Java."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://algoxi.com/p/design-an-in-memory-file-system/title.png' />
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hudb710b843bb3ae3084947a7ee12246ac_115492_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://algoxi.com">Xi Wang</a></h1>
+        <h2 class="site-description">💪 Millions of steps make a thousand miles.🦶🦶 Interested in full-stack development, cloud computing ☁️ , and deep learning 📖. Focus on back-end development now. Welcome to exchange technology ideas!</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://algoxi.com" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/design-an-in-memory-file-system/">
+                <img src="/p/design-an-in-memory-file-system/title_hu34d4c6d1240f01afb00eddd9d284b137_49784_800x0_resize_box_2.png"
+                        srcset="/p/design-an-in-memory-file-system/title_hu34d4c6d1240f01afb00eddd9d284b137_49784_800x0_resize_box_2.png 800w, /p/design-an-in-memory-file-system/title_hu34d4c6d1240f01afb00eddd9d284b137_49784_1600x0_resize_box_2.png 1600w"
+                        width="800" 
+                        height="228" 
+                        loading="lazy"
+                        alt="Featured image of post Design An In-memory File System" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/tools/" style="background-color: #2a9d8f; color: #fff;">
+                Tools
+            </a>
+        
+            <a href="/categories/ood/" >
+                OOD
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/design-an-in-memory-file-system/">Design An In-memory File System</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        An in-memory sile system using Java.
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Jan 06, 2021</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="what-is-file-system">What is File System?</h2>
+<ul>
+<li>
+<blockquote>
+<p>In <a class="link" href="https://en.wikipedia.org/wiki/Computing"  target="_blank" rel="noopener"
+    >computing</a>, a <strong>file system</strong> or <strong>filesystem</strong> (often abbreviated to <strong>fs</strong>) controls how data is <a class="link" href="https://en.wikipedia.org/wiki/Computer_data_storage"  target="_blank" rel="noopener"
+    >stored</a> and retrieved. Without a file system, data placed in a storage medium would be one large body of data with no way to tell where one piece of data stops and the next begins. By separating the data into pieces and giving each piece a name, the data is easily isolated and identified. Taking its name from the way paper-based data management system is named, each group of data is called a &ldquo;<a class="link" href="https://en.wikipedia.org/wiki/Computer_file"  target="_blank" rel="noopener"
+    >file</a>.&rdquo; The structure and logic rules used to manage the groups of data and their names is called a &ldquo;file system.&rdquo;</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 id="file-system-architecture">File System Architecture</h2>
+<ul>
+<li>
+<blockquote>
+<p>A file system consists of two or three layers. Sometimes the layers are explicitly separated, and sometimes the functions are combined.[<a class="link" href="https://en.wikipedia.org/wiki/File_system#cite_note-JHU-7"  target="_blank" rel="noopener"
+    >7]</a></p>
+</blockquote>
+<blockquote>
+<p>The <em>logical file system</em> is responsible for interaction with the user application. It provides the <a class="link" href="https://en.wikipedia.org/wiki/Application_program_interface"  target="_blank" rel="noopener"
+    >application program interface</a> (API) for file operations — <code>OPEN</code>, <code>CLOSE</code>, <code>READ</code>, etc., and passes the requested operation to the layer below it for processing. The logical file system &ldquo;manage[s] open file table entries and per-process file descriptors&rdquo;.[<a class="link" href="https://en.wikipedia.org/wiki/File_system#cite_note-IBMKC-8"  target="_blank" rel="noopener"
+    >8]</a> This layer provides &ldquo;file access, directory operations, [and] security and protection&rdquo;.[<a class="link" href="https://en.wikipedia.org/wiki/File_system#cite_note-JHU-7"  target="_blank" rel="noopener"
+    >7]</a></p>
+</blockquote>
+<blockquote>
+<p>The second optional layer is the <em>virtual file system</em>. &ldquo;This interface allows support for multiple concurrent instances of physical file systems, each of which is called a file system implementation&rdquo;.[<a class="link" href="https://en.wikipedia.org/wiki/File_system#cite_note-IBMKC-8"  target="_blank" rel="noopener"
+    >8]</a></p>
+</blockquote>
+<blockquote>
+<p>The third layer is the <em>physical file system</em>. This layer is concerned with the physical operation of the storage device (e.g. disk). It processes physical <a class="link" href="https://en.wikipedia.org/wiki/Block_%28data_storage%29"  target="_blank" rel="noopener"
+    >blocks</a> being read or written. It handles <a class="link" href="https://en.wikipedia.org/wiki/Data_buffer"  target="_blank" rel="noopener"
+    >buffering</a> and <a class="link" href="https://en.wikipedia.org/wiki/Memory_management"  target="_blank" rel="noopener"
+    >memory management</a> and is responsible for the physical placement of blocks in specific locations on the storage medium. The physical file system interacts with the <a class="link" href="https://en.wikipedia.org/wiki/Device_driver"  target="_blank" rel="noopener"
+    >device drivers</a> or with the <a class="link" href="https://en.wikipedia.org/wiki/Channel_I/O"  target="_blank" rel="noopener"
+    >channel</a> to drive the storage device.[<a class="link" href="https://en.wikipedia.org/wiki/File_system#cite_note-JHU-7"  target="_blank" rel="noopener"
+    >7]</a></p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 id="how-to-design">How To Design</h2>
+<ul>
+<li>
+<p>Assumption</p>
+<ul>
+<li>In-memory</li>
+<li>Only for file and directory</li>
+<li>metadata (name, creation time, access time, modification time, etc.)</li>
+</ul>
+</li>
+<li>
+<p>Use Cases</p>
+<ul>
+<li>create</li>
+<li>read</li>
+<li>update</li>
+<li>delete</li>
+</ul>
+</li>
+<li>
+<p>classes</p>
+<ul>
+<li>
+<h2 id="filesystem">FileSystem</h2>
+</li>
+<li>Entry
+<ul>
+<li>metadate 的生成</li>
+<li>生成文件路径: 1.需要文件名称; 2.parent的文件</li>
+</ul>
+</li>
+<li>File extends Entry
+<ul>
+<li>实际的内容, 一般为byte<input disabled="" type="checkbox"> </li>
+<li>文件大小</li>
+</ul>
+</li>
+<li>Directory extends Entry
+<ul>
+<li>List&lt; Entry &gt; 当前directory数据</li>
+<li>Directory文件的大小</li>
+<li>File文件的数量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/java/">java</a>
+        
+            <a href="/tags/file-system/">file system</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/p/ood-concepts/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">OOD Concepts</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/p/classpath-and-jar-in-java/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Classpath and jar in Java</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/circular-array-in-java/">
+        
+        
+            <div class="article-image">
+                <img src="/p/circular-array-in-java/title.77c59d823849750b6e0cf63e8d4dcbb7_hu282b076c37962327b9e9f2f9941cedb7_55275_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-d8WdgjhJdQtuDPY&#43;jU3Ltw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Circular Array in Java</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/comparable-and-comparator-in-java/">
+        
+        
+            <div class="article-image">
+                <img src="/p/comparable-and-comparator-in-java/comp.416ca269788158b12fa11006b0239d30_hub47c5bfc85d36c0060c7116740f93991_55540_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-QWyiaXiBWLEvoRAGsCOdMA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Comparable and Comparator in Java</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/essential-coding-skills-and-tricks-in-java/">
+        
+        
+            <div class="article-image">
+                <img src="/p/essential-coding-skills-and-tricks-in-java/tricks.4f60aec008761ee2bf0044dd10209572_hu694bfe41cd6616705a421d1bebe968e2_47124_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-T2CuwAh2HuK/AETdECCVcg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Essential Coding Skills and Tricks in Java</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 Xi Wang
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.1">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

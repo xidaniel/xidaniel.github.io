@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Xi Wang</title>
+    <link>https://algoxi.com/tags/git/</link>
+    <description>Recent content in git on Xi Wang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://algoxi.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git Guide</title>
+      <link>https://algoxi.com/p/git-guide/</link>
+      <pubDate>Sat, 26 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/git-guide/</guid>
+      <description>Workflow  workflow 
+建立本地repository  git init //会在当前目录下建立一个.git隐藏文件  设置签名   项目级别/仓库级别;仅在当前本地库范围有效
+ git config user.name xiwang git config user.email xiwang3317@gmail.com 配置保存在当前的.git/config文件里面    系统用户级别:(recommend)
+  git config &amp;ndash;global user.name xiwang
+  git config &amp;ndash;global user.email xiwang3317@gmail.com
+  保存在用户~/.gitconfig文件里面
+    查看状态  git status //查看工作区、暂存区状态  增加到缓存区  git add 文件名 //把工作区的添加到暂存区,把CRLF转为LF git add . // add all files  提交到本地库  git commit -m “comments” 文件名  Remote  git remote add original https: //&amp;hellip; git remote -v git push original master  </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Xi Wang</title>
+    <link>https://algoxi.com/post/</link>
+    <description>Recent content in Posts on Xi Wang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://algoxi.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About My Blog</title>
+      <link>https://algoxi.com/p/about-my-blog/</link>
+      <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/about-my-blog/</guid>
+      <description>Click here to move to my Github.</description>
+    </item>
+    
+    <item>
+      <title>Ace Algorithms Interview</title>
+      <link>https://algoxi.com/p/ace-algorithms-interview/</link>
+      <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/ace-algorithms-interview/</guid>
+      <description>Please go Here to get more details about algorithms.
+See some awesome projects to go Here</description>
+    </item>
+    
+    <item>
+      <title>Classpath and jar in Java</title>
+      <link>https://algoxi.com/p/classpath-and-jar-in-java/</link>
+      <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/classpath-and-jar-in-java/</guid>
+      <description>What is Classpath?   Classpath represents the path where JVM can find corresponding classes.
+  source file name: xxx.java &amp;ndash;&amp;gt; xxx.class
+  In Windows:
+  C:\work\project1\bin;C:\shared;&amp;#34;D:\My Documents\project1\bin&amp;#34;     In linux:
+  /usr/shared:/usr/local/bin:/home/liaoxuefeng/bin     . represents current path
+    How to Set Classpath?   In Windows:
+  java -cp .;C:\work\project1\bin;C:\shared abc.xyz.Hello     In linux:</description>
+    </item>
+    
+    <item>
+      <title>OOD Concepts</title>
+      <link>https://algoxi.com/p/ood-concepts/</link>
+      <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/ood-concepts/</guid>
+      <description>What is File System?  如果父类的fields为private,子类就无法访问,所以protected关键字就出来了 子类的constructor的第一行必须super() 父类constructor 子类不会继承任何父类的constructor 只要class没有final修饰符,那么任何class都可以从它继承 多态适用于在同样的父类情况下,每个子类的方法不一样 package是用来解决namespace问题  </description>
+    </item>
+    
+    <item>
+      <title>Circular Array in Java</title>
+      <link>https://algoxi.com/p/circular-array-in-java/</link>
+      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/circular-array-in-java/</guid>
+      <description>What is Circular Array?  Circular Array is that we can connect the start and end of the array, so that it is a cycle. Only used in bounded data structure. like bounded stack, queue, deque Usually use eager computation   
+ Implement a Bounded Queue   APIs:
+ boolean offer(Integer) Integer poll() Integer peek() int size() boolean isEmpty() boolean isFull()    public class BoundedQueue { int head; int tail; int size; Integer[] array; public BoundedQueue(int cap) { array = new Integer[cap]; head = tail = 0; size = 0; } public boolean offer(Integer value) { if (size == array.</description>
+    </item>
+    
+    <item>
+      <title>Design An In-memory File System</title>
+      <link>https://algoxi.com/p/design-an-in-memory-file-system/</link>
+      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/design-an-in-memory-file-system/</guid>
+      <description>What is File System?    In computing, a file system or filesystem (often abbreviated to fs) controls how data is stored and retrieved. Without a file system, data placed in a storage medium would be one large body of data with no way to tell where one piece of data stops and the next begins. By separating the data into pieces and giving each piece a name, the data is easily isolated and identified.</description>
+    </item>
+    
+    <item>
+      <title>Comparable and Comparator in Java</title>
+      <link>https://algoxi.com/p/comparable-and-comparator-in-java/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/comparable-and-comparator-in-java/</guid>
+      <description>Background There are two methods to implement sorting for Custom Class in Java.
+  Comparable&amp;lt; T &amp;gt;
+  It is an interface
+  &amp;lt; T &amp;gt; - the type of objects that this object may be compared to
+  It has only method:
+int compareTo(T o) { &amp;#34;do something&amp;#34; }   Java doc reference
+    Comparator&amp;lt; T &amp;gt;
+  It is an interface</description>
+    </item>
+    
+    <item>
+      <title>03 Spring Boot</title>
+      <link>https://algoxi.com/p/03-spring-boot/</link>
+      <pubDate>Wed, 30 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/03-spring-boot/</guid>
+      <description>Configuration File  There are two kind of file format can be used in Spring Boot  application.properties application.yml (recommended)     Why Need Config File  To modify defaule value which be initialized by Spring Boot.   YAML vs. XML vs. properties   There are three kind of configuration file type we usually.
+  YAML
+  server:prot:8081    XML
+  &amp;lt;server&amp;gt; &amp;lt;prot&amp;gt;8081&amp;lt;/prot&amp;gt; &amp;lt;/server&amp;gt;     properties</description>
+    </item>
+    
+    <item>
+      <title>Web Technology</title>
+      <link>https://algoxi.com/p/web-technology/</link>
+      <pubDate>Wed, 30 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/web-technology/</guid>
+      <description>HTTP   HTTPis a protocol which allows the fetching of resources, such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. It is an application layer protocol that is sent over TCP, or over a TLS-encrypted TCP connection, though any reliable transport protocol could theoretically be used.</description>
+    </item>
+    
+    <item>
+      <title>02 Spring Boot</title>
+      <link>https://algoxi.com/p/02-spring-boot/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/02-spring-boot/</guid>
+      <description>Start Project from Spring Initializer   Main file
+ src/main/java/com.example/main    resources
+ static: store static resources like js, css, images templates: store all templates files application.properties: config file, can modify some setting     “Project Structure” 
+Main Function   This method aims to run the spring boot application
+@SpringBootApplication public class HelloWorldApplication { public static void main(String[] args) { SpringApplication.run(HelloWorldApplication.class, args); } }   @SpringBootApplication</description>
+    </item>
+    
+    <item>
+      <title>About Maven</title>
+      <link>https://algoxi.com/p/about-maven/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/about-maven/</guid>
+      <description>Maven  What can Maven do?  Dependencies Management: Mange different jar package, package index be stetted in pom.xml Execute code Test code One-click build project   Maven Project Content Structure  src/main/java &amp;ndash;&amp;gt; core code src/main/resources &amp;ndash;&amp;gt; configure files src/test/java &amp;ndash;&amp;gt; test code src/test/resources &amp;ndash;&amp;gt; test configure files src/main/webapp &amp;ndash;&amp;gt; index.html, js, css, images, etc.   Maven Commends  mvn clean &amp;ndash;&amp;gt; delete target file why? // if we change env to develop project, because the configuration is different</description>
+    </item>
+    
+    <item>
+      <title>Essential Coding Skills and Tricks in Java</title>
+      <link>https://algoxi.com/p/essential-coding-skills-and-tricks-in-java/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/essential-coding-skills-and-tricks-in-java/</guid>
+      <description>Essential Coding Skills and Tricks in Java Data Structure Operation  Array   Array is a consecutive allocated memory space, no overhead
+  It&amp;rsquo;s size is fixed.
+  它是mutable类型可以直接在原来位置进行CURD
+  Iterate an array from left to right
+for (int i = 0; i &amp;lt; array.length; i++)   Iterate an array from right to left
+for (int i = array.length - 1; i &amp;gt;= 0; i++)   Iterate an array custom step</description>
+    </item>
+    
+    <item>
+      <title>01 Spring Boot</title>
+      <link>https://algoxi.com/p/01-spring-boot/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/01-spring-boot/</guid>
+      <description>Spring Boot  Why?  Before: import packages + dependences + write config files + test development logic + deploy + &amp;hellip;.. Now: Spring Boot can simplify those workflow  Introduction    Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can &amp;ldquo;just run&amp;rdquo;.
+   Spring Boot来简化Spring应用开发,去翻从简,产品级别应用.
+  可以快速创建独立运行的Spring项目以及主流框架的集成
+  J2EE开发的一站式解决方案
+  与云计算天然集成
+  Applyed in Microservices</description>
+    </item>
+    
+    <item>
+      <title>Markdown Syntax Guide</title>
+      <link>https://algoxi.com/p/markdown-syntax-guide/</link>
+      <pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/markdown-syntax-guide/</guid>
+      <description>Markdown Syntax Italics   _   Bold   **   Header    #   Link other web sites   Inline links
+  [text](web site address)   example: Go to xi&amp;rsquo;s blog
+    reference links
+  here is a [line][here] [here]: https://www.algoxi.com   Here is a Link.
+     Images   Inline image link</description>
+    </item>
+    
+    <item>
+      <title>Git Guide</title>
+      <link>https://algoxi.com/p/git-guide/</link>
+      <pubDate>Sat, 26 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/git-guide/</guid>
+      <description>Workflow  workflow 
+建立本地repository  git init //会在当前目录下建立一个.git隐藏文件  设置签名   项目级别/仓库级别;仅在当前本地库范围有效
+ git config user.name xiwang git config user.email xiwang3317@gmail.com 配置保存在当前的.git/config文件里面    系统用户级别:(recommend)
+  git config &amp;ndash;global user.name xiwang
+  git config &amp;ndash;global user.email xiwang3317@gmail.com
+  保存在用户~/.gitconfig文件里面
+    查看状态  git status //查看工作区、暂存区状态  增加到缓存区  git add 文件名 //把工作区的添加到暂存区,把CRLF转为LF git add . // add all files  提交到本地库  git commit -m “comments” 文件名  Remote  git remote add original https: //&amp;hellip; git remote -v git push original master  </description>
+    </item>
+    
+    <item>
+      <title>Setup Your Own Blog (Custom Domain Name)</title>
+      <link>https://algoxi.com/p/setup-your-own-blog-custom-domain-name/</link>
+      <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/setup-your-own-blog-custom-domain-name/</guid>
+      <description>Used Tools  hugo + github.io + custom domain name  Install hugo  brew install hugo hugo new site myblog search themes hugo server -D hugo server -t &amp;ndash;buildDrafts hugo new post/blog.md hugo &amp;ndash;theme=m10c &amp;ndash;baseUrl=&amp;ldquo;https://xidaniel.github.io/&amp;quot; &amp;ndash;buildDrafts cd public/ git init git add . git commit -m &amp;ldquo;My first submit&amp;rdquo; git remote add origin https://github.com/xidaniel/xidaniel.github.io.git git push -u origin master  Update Post  hugo -D //generate new public hugo server -D //locally review  </description>
+    </item>
+    
+    <item>
+      <title>Movie Recommendation System</title>
+      <link>https://algoxi.com/p/movie-recommendation-system/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/movie-recommendation-system/</guid>
+      <description>Data Flow: business system &amp;ndash;&amp;gt; log &amp;ndash;&amp;gt; flume collectiong, aggregating etc. &amp;ndash;&amp;gt; kafka streaming 数据清洗和处理 &amp;ndash;&amp;gt; spark streaming 流式计算
+MongoDB Concepts: database / collection / document  show dbs use database name, access db local current database name show collections CRUD one to many structure  Elasticsearch vs. Solr  open http://localhost:9200 check collection http://localhost:9200/_cat/indices check index http://localhost:9200/recommender/_search?pretty 条件查询 curl &amp;ldquo;localhost:9200/recommender/_search?pretty&amp;rdquo; -d &amp;lsquo;{&amp;ldquo;query&amp;rdquo;: {&amp;ldquo;bool&amp;rdquo; : {&amp;ldquo;must&amp;rdquo; : {&amp;ldquo;exists&amp;rdquo; : {&amp;ldquo;field&amp;rdquo;: &amp;ldquo;tags&amp;rdquo;}}}}}&amp;rsquo;  SQL  count group by order distinct  Zookeeper  jps check all java process start: .</description>
+    </item>
+    
+    <item>
+      <title>Rich Content</title>
+      <link>https://algoxi.com/p/rich-content/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/rich-content/</guid>
+      <description>&lt;p&gt;Hugo ships with several &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

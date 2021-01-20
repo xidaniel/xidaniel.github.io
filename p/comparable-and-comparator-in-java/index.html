@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='How/When to use comparable and comparator in Java.'><title>Comparable and Comparator in Java</title>
+
+<link rel='canonical' href='https://algoxi.com/p/comparable-and-comparator-in-java/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Comparable and Comparator in Java'>
+<meta property='og:description' content='How/When to use comparable and comparator in Java.'>
+<meta property='og:url' content='https://algoxi.com/p/comparable-and-comparator-in-java/'>
+<meta property='og:site_name' content='Xi Wang'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='java' /><meta property='article:tag' content='comparator' /><meta property='article:tag' content='comparable' /><meta property='article:published_time' content='2021-01-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-04T00:00:00&#43;00:00'/><meta property='og:image' content='https://algoxi.com/p/comparable-and-comparator-in-java/comp.png' />
+<meta name="twitter:title" content="Comparable and Comparator in Java">
+<meta name="twitter:description" content="How/When to use comparable and comparator in Java."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://algoxi.com/p/comparable-and-comparator-in-java/comp.png' />
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hudb710b843bb3ae3084947a7ee12246ac_115492_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://algoxi.com">Xi Wang</a></h1>
+        <h2 class="site-description">💪 Millions of steps make a thousand miles.🦶🦶 Interested in full-stack development, cloud computing ☁️ , and deep learning 📖. Focus on back-end development now. Welcome to exchange technology ideas!</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://algoxi.com" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/comparable-and-comparator-in-java/">
+                <img src="/p/comparable-and-comparator-in-java/comp_hub47c5bfc85d36c0060c7116740f93991_55540_800x0_resize_box_2.png"
+                        srcset="/p/comparable-and-comparator-in-java/comp_hub47c5bfc85d36c0060c7116740f93991_55540_800x0_resize_box_2.png 800w, /p/comparable-and-comparator-in-java/comp_hub47c5bfc85d36c0060c7116740f93991_55540_1600x0_resize_box_2.png 1600w"
+                        width="800" 
+                        height="227" 
+                        loading="lazy"
+                        alt="Featured image of post Comparable and Comparator in Java" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/tools/" style="background-color: #2a9d8f; color: #fff;">
+                Tools
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/comparable-and-comparator-in-java/">Comparable and Comparator in Java</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        How/When to use comparable and comparator in Java.
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Jan 04, 2021</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="background">Background</h2>
+<p>There are two methods to implement sorting for <strong><em>Custom Class</em></strong> in Java.</p>
+<ul>
+<li>
+<p><strong>Comparable&lt; T &gt;</strong></p>
+<ul>
+<li>
+<p>It is an interface</p>
+</li>
+<li>
+<p>&lt; T &gt; - the type of objects that this object may be compared to</p>
+</li>
+<li>
+<p>It has only method:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="n">T</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+  <span class="s">&#34;do something&#34;</span>
+<span class="o">}</span>
+</code></pre></div></li>
+<li>
+<p><a class="link" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html"  target="_blank" rel="noopener"
+    >Java doc reference</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Comparator&lt; T &gt;</strong></p>
+<ul>
+<li>
+<p>It is an interface</p>
+</li>
+<li>
+<p>&lt; T &gt; - the type of objects that may be compared by this comparator</p>
+</li>
+<li>
+<p>We usually use one method</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">T</span> <span class="n">o1</span><span class="o">,</span> <span class="n">T</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+  <span class="s">&#34;do something&#34;</span>
+<span class="o">}</span>
+</code></pre></div></li>
+<li>
+<p><a class="link" href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html"  target="_blank" rel="noopener"
+    >Java doc reference</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="why-use-it">Why Use It?</h2>
+<ul>
+<li>
+<p>我们需要对自定义的类排序时,但是Java内部没有实现这样的接口</p>
+</li>
+<li>
+<p>比如我们自定义一个类叫Dog, 要求根据dog的年龄进行排序</p>
+</li>
+<li>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+      
+    <span class="kd">public</span> <span class="nf">Dog</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+      
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;Dog{&#34;</span> <span class="o">+</span>
+                <span class="s">&#34;name=&#39;&#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                <span class="s">&#34;, age=&#34;</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span>
+                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></li>
+<li>
+<p>Output 会报错:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Dog</span><span class="o">[]</span> <span class="n">dogs</span> <span class="o">=</span> <span class="o">{</span><span class="k">new</span> <span class="n">Dog</span><span class="o">(</span><span class="s">&#34;David&#34;</span><span class="o">,</span> <span class="n">3</span><span class="o">),</span> <span class="k">new</span> <span class="n">Dog</span><span class="o">(</span><span class="s">&#34;Bill&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">)};</span>
+        <span class="n">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">dogs</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">dogs</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="cm">/*
+</span><span class="cm">Exception in thread &#34;main&#34; java.lang.ClassCastException: com.algoxi.my_error.comparable.Dog cannot be cast to java.lang.Comparable
+</span><span class="cm">  at java.util.ComparableTimSort.countRunAndMakeAscending(ComparableTimSort.java:320)
+</span><span class="cm">  at java.util.ComparableTimSort.sort(ComparableTimSort.java:188)
+</span><span class="cm">  at java.util.Arrays.sort(Arrays.java:1246)
+</span><span class="cm">  at com.algoxi.Main.main(Main.java:12)
+</span><span class="cm">*/</span>
+</code></pre></div></li>
+</ul>
+<hr>
+<h2 id="how-to-use-it">How To Use It?</h2>
+<ol>
+<li>
+<p>用comparable</p>
+<ul>
+<li>Dog类直接实现 comparable</li>
+<li>Dog类里面也要实现compareTo的方法</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="kd">implements</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Dog</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+   
+    <span class="kd">public</span> <span class="nf">Dog</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+   
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;Dog{&#34;</span> <span class="o">+</span>
+                <span class="s">&#34;name=&#39;&#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                <span class="s">&#34;, age=&#34;</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span>
+                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+    <span class="o">}</span>
+   
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="n">Dog</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">==</span> <span class="n">o</span><span class="o">.</span><span class="na">age</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">&lt;</span> <span class="n">o</span><span class="o">.</span><span class="na">age</span> <span class="o">?</span> <span class="o">-</span><span class="n">1</span> <span class="o">:</span> <span class="n">1</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><ul>
+<li>Output:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Dog</span><span class="o">[]</span> <span class="n">dogs</span> <span class="o">=</span> <span class="o">{</span><span class="k">new</span> <span class="n">Dog</span><span class="o">(</span><span class="s">&#34;David&#34;</span><span class="o">,</span> <span class="n">3</span><span class="o">),</span> <span class="k">new</span> <span class="n">Dog</span><span class="o">(</span><span class="s">&#34;Bill&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">)};</span>
+        <span class="n">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">dogs</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">dogs</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+   
+<span class="cm">/*
+</span><span class="cm">[Dog{name=&#39;Bill&#39;, age=1}, Dog{name=&#39;David&#39;, age=3}]
+</span><span class="cm">*/</span>
+</code></pre></div></li>
+<li>
+<p>用Comparator</p>
+<ul>
+<li>原来的Dog保持不变</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+   
+    <span class="kd">public</span> <span class="nf">Dog</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+   
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;Dog{&#34;</span> <span class="o">+</span>
+                <span class="s">&#34;name=&#39;&#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                <span class="s">&#34;, age=&#34;</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span>
+                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><ul>
+<li>创建一个DogComparator类</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Comparator</span><span class="o">;</span>
+   
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DogComparator</span> <span class="kd">implements</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Dog</span><span class="o">&gt;</span> <span class="o">{</span>
+   
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">Dog</span> <span class="n">o1</span><span class="o">,</span> <span class="n">Dog</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">o1</span><span class="o">.</span><span class="na">age</span> <span class="o">==</span> <span class="n">o2</span><span class="o">.</span><span class="na">age</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">o1</span><span class="o">.</span><span class="na">age</span> <span class="o">&lt;</span> <span class="n">o2</span><span class="o">.</span><span class="na">age</span> <span class="o">?</span> <span class="o">-</span><span class="n">1</span> <span class="o">:</span> <span class="n">1</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><ul>
+<li>Output:</li>
+<li>要对comparator进行new的操作</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Dog</span><span class="o">[]</span> <span class="n">dogs</span> <span class="o">=</span> <span class="o">{</span><span class="k">new</span> <span class="n">Dog</span><span class="o">(</span><span class="s">&#34;David&#34;</span><span class="o">,</span> <span class="n">3</span><span class="o">),</span> <span class="k">new</span> <span class="n">Dog</span><span class="o">(</span><span class="s">&#34;Bill&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">)};</span>
+        <span class="n">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">dogs</span><span class="o">,</span> <span class="k">new</span> <span class="n">DogComparator</span><span class="o">());</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">dogs</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="cm">/*
+</span><span class="cm">[Dog{name=&#39;Bill&#39;, age=1}, Dog{name=&#39;David&#39;, age=3}]
+</span><span class="cm">*/</span>
+</code></pre></div></li>
+</ol>
+<hr>
+<h2 id="anonymous-inner-class">Anonymous Inner Class</h2>
+<ul>
+<li>
+<p>Anonymous Example</p>
+</li>
+<li>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">PriorityQueue</span><span class="o">&lt;</span><span class="n">Dog</span><span class="o">&gt;</span> <span class="n">minHeap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Dog</span><span class="o">&gt;()</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">Dog</span> <span class="n">o1</span><span class="o">,</span> <span class="n">Dog</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">o1</span><span class="o">.</span><span class="na">age</span> <span class="o">==</span> <span class="n">o2</span><span class="o">.</span><span class="na">age</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">o1</span><span class="o">.</span><span class="na">age</span> <span class="o">&lt;</span> <span class="n">o2</span><span class="o">.</span><span class="na">age</span> <span class="o">?</span> <span class="o">-</span><span class="n">1</span> <span class="o">:</span> <span class="n">1</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></li>
+<li>
+<p>Normal Example</p>
+</li>
+<li>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">PriorityQueue</span><span class="o">&lt;</span><span class="n">Dog</span><span class="o">&gt;</span> <span class="n">minHeap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="n">DogComparator</span><span class="o">());</span>
+</code></pre></div></li>
+<li>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DogComparator</span> <span class="kd">implements</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Dog</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">Dog</span> <span class="n">o1</span><span class="o">,</span> <span class="n">Dog</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">o1</span><span class="o">.</span><span class="na">age</span> <span class="o">==</span> <span class="n">o2</span><span class="o">.</span><span class="na">age</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">o1</span><span class="o">.</span><span class="na">age</span> <span class="o">&lt;</span> <span class="n">o2</span><span class="o">.</span><span class="na">age</span> <span class="o">?</span> <span class="o">-</span><span class="n">1</span> <span class="o">:</span> <span class="n">1</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></li>
+<li>
+<p>Another Tips:</p>
+<ul>
+<li>We can use <strong>Collections.reverseOrder()</strong> in PriorityQueue&rsquo;s constructor to implement <strong>maxHeap</strong>.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="-and-equals">&ldquo;==&rdquo; and equals</h2>
+<ul>
+<li>
+<p>For Object</p>
+<ul>
+<li>
+<p>check value: <strong>o1.equals(o2)</strong></p>
+</li>
+<li>
+<p>check address: o1 == o2</p>
+</li>
+<li>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">&#34;abc&#34;</span><span class="o">);</span>
+  <span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">&#34;abc&#34;</span><span class="o">);</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s1</span> <span class="o">==</span> <span class="n">s2</span><span class="o">);</span>
+  <span class="c1">// false
+</span><span class="c1"></span>  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">s2</span><span class="o">));</span>
+  <span class="c1">//true
+</span><span class="c1"></span><span class="o">}</span>
+</code></pre></div><ul>
+<li>because constant pool, they are created in same address</li>
+</ul>
+</li>
+<li>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="s">&#34;abc&#34;</span><span class="o">;</span>
+  <span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="s">&#34;abc&#34;</span><span class="o">;</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s1</span> <span class="o">==</span> <span class="n">s2</span><span class="o">);</span>
+  <span class="c1">// true
+</span><span class="c1"></span>  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">s2</span><span class="o">));</span>
+  <span class="c1">//true
+</span><span class="c1"></span><span class="o">}</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>For Primitive Type</p>
+<ul>
+<li>check value: i1 == i2</li>
+</ul>
+</li>
+</ul>
+<p>end.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/java/">java</a>
+        
+            <a href="/tags/comparator/">comparator</a>
+        
+            <a href="/tags/comparable/">comparable</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/p/classpath-and-jar-in-java/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Classpath and jar in Java</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/p/ood-concepts/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">OOD Concepts</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/circular-array-in-java/">
+        
+        
+            <div class="article-image">
+                <img src="/p/circular-array-in-java/title.77c59d823849750b6e0cf63e8d4dcbb7_hu282b076c37962327b9e9f2f9941cedb7_55275_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-d8WdgjhJdQtuDPY&#43;jU3Ltw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Circular Array in Java</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/design-an-in-memory-file-system/">
+        
+        
+            <div class="article-image">
+                <img src="/p/design-an-in-memory-file-system/title.d548f87a0192f7b86598114135851b4c_hu34d4c6d1240f01afb00eddd9d284b137_49784_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-1Uj4egGS97hlmBFBNYUbTA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Design An In-memory File System</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/essential-coding-skills-and-tricks-in-java/">
+        
+        
+            <div class="article-image">
+                <img src="/p/essential-coding-skills-and-tricks-in-java/tricks.4f60aec008761ee2bf0044dd10209572_hu694bfe41cd6616705a421d1bebe968e2_47124_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-T2CuwAh2HuK/AETdECCVcg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Essential Coding Skills and Tricks in Java</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 Xi Wang
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.1">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

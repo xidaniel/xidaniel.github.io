@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>classpath on Xi Wang</title>
+    <link>https://algoxi.com/tags/classpath/</link>
+    <description>Recent content in classpath on Xi Wang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://algoxi.com/tags/classpath/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Classpath and jar in Java</title>
+      <link>https://algoxi.com/p/classpath-and-jar-in-java/</link>
+      <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/classpath-and-jar-in-java/</guid>
+      <description>What is Classpath?   Classpath represents the path where JVM can find corresponding classes.
+  source file name: xxx.java &amp;ndash;&amp;gt; xxx.class
+  In Windows:
+  C:\work\project1\bin;C:\shared;&amp;#34;D:\My Documents\project1\bin&amp;#34;     In linux:
+  /usr/shared:/usr/local/bin:/home/liaoxuefeng/bin     . represents current path
+    How to Set Classpath?   In Windows:
+  java -cp .;C:\work\project1\bin;C:\shared abc.xyz.Hello     In linux:</description>
+    </item>
+    
+  </channel>
+</rss>

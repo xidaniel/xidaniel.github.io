@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>markdown on Xi Wang</title>
+    <link>https://algoxi.com/tags/markdown/</link>
+    <description>Recent content in markdown on Xi Wang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 27 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://algoxi.com/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Markdown Syntax Guide</title>
+      <link>https://algoxi.com/p/markdown-syntax-guide/</link>
+      <pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/markdown-syntax-guide/</guid>
+      <description>Markdown Syntax Italics   _   Bold   **   Header    #   Link other web sites   Inline links
+  [text](web site address)   example: Go to xi&amp;rsquo;s blog
+    reference links
+  here is a [line][here] [here]: https://www.algoxi.com   Here is a Link.
+     Images   Inline image link</description>
+    </item>
+    
+  </channel>
+</rss>

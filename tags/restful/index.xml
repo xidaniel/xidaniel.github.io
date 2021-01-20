@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RESTFul on Xi Wang</title>
+    <link>https://algoxi.com/tags/restful/</link>
+    <description>Recent content in RESTFul on Xi Wang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 30 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://algoxi.com/tags/restful/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web Technology</title>
+      <link>https://algoxi.com/p/web-technology/</link>
+      <pubDate>Wed, 30 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/web-technology/</guid>
+      <description>HTTP   HTTPis a protocol which allows the fetching of resources, such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. It is an application layer protocol that is sent over TCP, or over a TLS-encrypted TCP connection, though any reliable transport protocol could theoretically be used.</description>
+    </item>
+    
+  </channel>
+</rss>

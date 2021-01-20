@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Xi Wang</title>
+    <link>https://algoxi.com/categories/</link>
+    <description>Recent content in Categories on Xi Wang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://algoxi.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Algorithms</title>
+      <link>https://algoxi.com/categories/algorithm/</link>
+      <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/categories/algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OOD</title>
+      <link>https://algoxi.com/categories/ood/</link>
+      <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/categories/ood/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>https://algoxi.com/categories/tools/</link>
+      <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/categories/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Frameworks</title>
+      <link>https://algoxi.com/categories/framework/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/categories/framework/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://algoxi.com/categories/project/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/categories/project/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

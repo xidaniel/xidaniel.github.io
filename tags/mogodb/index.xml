@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mogodb on Xi Wang</title>
+    <link>https://algoxi.com/tags/mogodb/</link>
+    <description>Recent content in mogodb on Xi Wang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://algoxi.com/tags/mogodb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Movie Recommendation System</title>
+      <link>https://algoxi.com/p/movie-recommendation-system/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/movie-recommendation-system/</guid>
+      <description>Data Flow: business system &amp;ndash;&amp;gt; log &amp;ndash;&amp;gt; flume collectiong, aggregating etc. &amp;ndash;&amp;gt; kafka streaming 数据清洗和处理 &amp;ndash;&amp;gt; spark streaming 流式计算
+MongoDB Concepts: database / collection / document  show dbs use database name, access db local current database name show collections CRUD one to many structure  Elasticsearch vs. Solr  open http://localhost:9200 check collection http://localhost:9200/_cat/indices check index http://localhost:9200/recommender/_search?pretty 条件查询 curl &amp;ldquo;localhost:9200/recommender/_search?pretty&amp;rdquo; -d &amp;lsquo;{&amp;ldquo;query&amp;rdquo;: {&amp;ldquo;bool&amp;rdquo; : {&amp;ldquo;must&amp;rdquo; : {&amp;ldquo;exists&amp;rdquo; : {&amp;ldquo;field&amp;rdquo;: &amp;ldquo;tags&amp;rdquo;}}}}}&amp;rsquo;  SQL  count group by order distinct  Zookeeper  jps check all java process start: .</description>
+    </item>
+    
+  </channel>
+</rss>

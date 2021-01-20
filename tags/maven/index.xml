@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maven on Xi Wang</title>
+    <link>https://algoxi.com/tags/maven/</link>
+    <description>Recent content in Maven on Xi Wang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://algoxi.com/tags/maven/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Maven</title>
+      <link>https://algoxi.com/p/about-maven/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/about-maven/</guid>
+      <description>Maven  What can Maven do?  Dependencies Management: Mange different jar package, package index be stetted in pom.xml Execute code Test code One-click build project   Maven Project Content Structure  src/main/java &amp;ndash;&amp;gt; core code src/main/resources &amp;ndash;&amp;gt; configure files src/test/java &amp;ndash;&amp;gt; test code src/test/resources &amp;ndash;&amp;gt; test configure files src/main/webapp &amp;ndash;&amp;gt; index.html, js, css, images, etc.   Maven Commends  mvn clean &amp;ndash;&amp;gt; delete target file why? // if we change env to develop project, because the configuration is different</description>
+    </item>
+    
+  </channel>
+</rss>

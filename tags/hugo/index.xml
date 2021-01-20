@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hugo on Xi Wang</title>
+    <link>https://algoxi.com/tags/hugo/</link>
+    <description>Recent content in hugo on Xi Wang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://algoxi.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setup Your Own Blog (Custom Domain Name)</title>
+      <link>https://algoxi.com/p/setup-your-own-blog-custom-domain-name/</link>
+      <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/setup-your-own-blog-custom-domain-name/</guid>
+      <description>Used Tools  hugo + github.io + custom domain name  Install hugo  brew install hugo hugo new site myblog search themes hugo server -D hugo server -t &amp;ndash;buildDrafts hugo new post/blog.md hugo &amp;ndash;theme=m10c &amp;ndash;baseUrl=&amp;ldquo;https://xidaniel.github.io/&amp;quot; &amp;ndash;buildDrafts cd public/ git init git add . git commit -m &amp;ldquo;My first submit&amp;rdquo; git remote add origin https://github.com/xidaniel/xidaniel.github.io.git git push -u origin master  Update Post  hugo -D //generate new public hugo server -D //locally review  </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OOD on Xi Wang</title>
+    <link>https://algoxi.com/tags/ood/</link>
+    <description>Recent content in OOD on Xi Wang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://algoxi.com/tags/ood/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Essential Coding Skills and Tricks in Java</title>
+      <link>https://algoxi.com/p/essential-coding-skills-and-tricks-in-java/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/essential-coding-skills-and-tricks-in-java/</guid>
+      <description>Essential Coding Skills and Tricks in Java Data Structure Operation  Array   Array is a consecutive allocated memory space, no overhead
+  It&amp;rsquo;s size is fixed.
+  它是mutable类型可以直接在原来位置进行CURD
+  Iterate an array from left to right
+for (int i = 0; i &amp;lt; array.length; i++)   Iterate an array from right to left
+for (int i = array.length - 1; i &amp;gt;= 0; i++)   Iterate an array custom step</description>
+    </item>
+    
+  </channel>
+</rss>

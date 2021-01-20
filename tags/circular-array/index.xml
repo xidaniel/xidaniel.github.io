@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Circular Array on Xi Wang</title>
+    <link>https://algoxi.com/tags/circular-array/</link>
+    <description>Recent content in Circular Array on Xi Wang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 06 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://algoxi.com/tags/circular-array/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Circular Array in Java</title>
+      <link>https://algoxi.com/p/circular-array-in-java/</link>
+      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://algoxi.com/p/circular-array-in-java/</guid>
+      <description>What is Circular Array?  Circular Array is that we can connect the start and end of the array, so that it is a cycle. Only used in bounded data structure. like bounded stack, queue, deque Usually use eager computation   
+ Implement a Bounded Queue   APIs:
+ boolean offer(Integer) Integer poll() Integer peek() int size() boolean isEmpty() boolean isFull()    public class BoundedQueue { int head; int tail; int size; Integer[] array; public BoundedQueue(int cap) { array = new Integer[cap]; head = tail = 0; size = 0; } public boolean offer(Integer value) { if (size == array.</description>
+    </item>
+    
+  </channel>
+</rss>
